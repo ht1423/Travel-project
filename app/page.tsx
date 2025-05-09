@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,8 +9,12 @@ import travelImage from '@/public/travel.jpg'
 import pattayaImage from '@/public/pattaya.jpg'
 import phuketImage from '@/public/phuket.webp'
 import bangkokImage from '@/public/bangkok.webp'
+import { useRouter } from "next/navigation";
+
 
 export default function Home() {
+const router = useRouter();
+
   return (
     <div className="min-h-screen bg-black flex flex-col justify-center items-center w-full">
       {/* Hero Section */}
@@ -27,9 +33,14 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-[600px] text-gray-200">
             Your journey begins here. Discover amazing destinations and create unforgettable memories.
           </p>
-          <Button size="lg" className="text-lg px-8 bg-white text-black hover:bg-gray-200">
-            Start Planning
-          </Button>
+          <Button
+  size="lg"
+  className="text-lg px-8 bg-white text-black hover:bg-gray-200"
+  onClick={() => router.push("/explore")}
+>
+  Start Planning
+</Button>
+
         </div>
       </div>
 
@@ -125,6 +136,24 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Currency Exchange Section */}
+      <div className="bg-zinc-800 py-20 w-full">
+        <div className="w-full mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Currency Exchange</h2>
+          <p className="text-xl text-center text-gray-400 mb-8 max-w-lg mx-auto">
+            Exchange your money for the best rates and get ready for your next trip. Stay on top of your budget while traveling the world!
+          </p>
+          <div className="flex justify-center">
+            <Button
+              className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-3"
+              onClick={() => router.push("/exchange")}
+            >
+              Go to Currency Exchange
+            </Button>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="bg-zinc-950 text-gray-300 py-12">
         <div className="max-w-6xl mx-auto px-4">
@@ -149,6 +178,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+            
             <div>
               <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
               <ul className="space-y-2 text-gray-400">
